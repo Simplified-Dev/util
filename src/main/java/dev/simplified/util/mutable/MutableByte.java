@@ -8,16 +8,8 @@ import dev.sbs.api.util.helper.NumberUtil;
  * Note that as MutableByte does not extend Byte, it is not treated by String.format as a Byte parameter.
  *
  * @see Byte
- * @since 2.1
  */
 public class MutableByte extends Number implements Comparable<MutableByte>, Mutable<Number> {
-
-    /**
-     * Required for serialization support.
-     *
-     * @see java.io.Serializable
-     */
-    private static final long serialVersionUID = -1585823265L;
 
     /** The mutable value. */
     private byte value;
@@ -63,7 +55,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @return the value as a Byte, never null
      */
     @Override
-    public Byte getValue() {
+    public Byte get() {
         return this.value;
     }
 
@@ -72,7 +64,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      *
      * @param value  the value to set
      */
-    public void setValue(final byte value) {
+    public void set(final byte value) {
         this.value = value;
     }
 
@@ -83,7 +75,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @throws NullPointerException if the object is null
      */
     @Override
-    public void setValue(final Number value) {
+    public void set(final Number value) {
         this.value = value.byteValue();
     }
 

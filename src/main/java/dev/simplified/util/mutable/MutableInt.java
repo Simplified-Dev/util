@@ -8,16 +8,8 @@ import dev.sbs.api.util.helper.NumberUtil;
  * Note that as MutableInt does not extend Integer, it is not treated by String.format as an Integer parameter.
  *
  * @see Integer
- * @since 2.1
  */
 public class MutableInt extends Number implements Comparable<MutableInt>, Mutable<Number> {
-
-    /**
-     * Required for serialization support.
-     *
-     * @see java.io.Serializable
-     */
-    private static final long serialVersionUID = 512176391864L;
 
     /** The mutable value. */
     private int value;
@@ -68,7 +60,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @return the value as a Integer, never null
      */
     @Override
-    public Integer getValue() {
+    public Integer get() {
         return this.value;
     }
 
@@ -77,7 +69,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      *
      * @param value  the value to set
      */
-    public void setValue(final int value) {
+    public void set(final int value) {
         this.value = value;
     }
 
@@ -88,7 +80,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @throws NullPointerException if the object is null
      */
     @Override
-    public void setValue(final Number value) {
+    public void set(final Number value) {
         this.value = value.intValue();
     }
 

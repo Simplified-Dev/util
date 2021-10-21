@@ -27,7 +27,6 @@ package dev.sbs.api.util.mutable;
  * a collection (for example a total in a map) without needing to create new Integer/Long wrapper objects.
  *
  * @param <T> the type to set and get
- * @since 2.1
  */
 public interface Mutable<T> {
 
@@ -36,18 +35,15 @@ public interface Mutable<T> {
      *
      * @return the stored value
      */
-    T getValue();
+    T get();
 
     /**
      * Sets the value of this mutable.
      *
-     * @param value
-     *            the value to store
-     * @throws NullPointerException
-     *             if the object is null and null is invalid
-     * @throws ClassCastException
-     *             if the type is invalid
+     * @param value the value to store
+     * @throws NullPointerException if the object is null and null is invalid
+     * @throws ClassCastException if the type is invalid
      */
-    void setValue(T value);
+    void set(T value);
 
 }

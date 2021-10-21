@@ -9,13 +9,6 @@ import java.io.Serializable;
  */
 public class MutableObject<T> implements Mutable<T>, Serializable {
 
-    /**
-     * Required for serialization support.
-     *
-     * @see Serializable
-     */
-    private static final long serialVersionUID = 86241875189L;
-
     /** The mutable value. */
     private T value;
 
@@ -43,7 +36,7 @@ public class MutableObject<T> implements Mutable<T>, Serializable {
      * @return the value, may be null
      */
     @Override
-    public T getValue() {
+    public T get() {
         return this.value;
     }
 
@@ -53,7 +46,7 @@ public class MutableObject<T> implements Mutable<T>, Serializable {
      * @param value  the value to set
      */
     @Override
-    public void setValue(final T value) {
+    public void set(final T value) {
         this.value = value;
     }
 

@@ -9,13 +9,6 @@ package dev.sbs.api.util.mutable;
  */
 public class MutableFloat extends Number implements Comparable<MutableFloat>, Mutable<Number> {
 
-    /**
-     * Required for serialization support.
-     *
-     * @see java.io.Serializable
-     */
-    private static final long serialVersionUID = 5787169186L;
-
     /** The mutable value. */
     private float value;
 
@@ -60,7 +53,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @return the value as a Float, never null
      */
     @Override
-    public Float getValue() {
+    public Float get() {
         return this.value;
     }
 
@@ -69,7 +62,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      *
      * @param value  the value to set
      */
-    public void setValue(final float value) {
+    public void set(final float value) {
         this.value = value;
     }
 
@@ -80,7 +73,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @throws NullPointerException if the object is null
      */
     @Override
-    public void setValue(final Number value) {
+    public void set(final Number value) {
         this.value = value.floatValue();
     }
 

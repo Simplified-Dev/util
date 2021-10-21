@@ -13,13 +13,6 @@ import java.io.Serializable;
  */
 public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparable<MutableBoolean> {
 
-    /**
-     * Required for serialization support.
-     *
-     * @see Serializable
-     */
-    private static final long serialVersionUID = -4830728138360036487L;
-
     /** The mutable value. */
     private boolean value;
 
@@ -54,7 +47,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      * @return the value as a Boolean, never null
      */
     @Override
-    public Boolean getValue() {
+    public Boolean get() {
         return this.value;
     }
 
@@ -63,7 +56,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      *
      * @param value  the value to set
      */
-    public void setValue(final boolean value) {
+    public void set(final boolean value) {
         this.value = value;
     }
 
@@ -90,7 +83,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      * @throws NullPointerException if the object is null
      */
     @Override
-    public void setValue(final Boolean value) {
+    public void set(final Boolean value) {
         this.value = value;
     }
 

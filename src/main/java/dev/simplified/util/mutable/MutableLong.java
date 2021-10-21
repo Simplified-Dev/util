@@ -11,13 +11,6 @@ import dev.sbs.api.util.helper.NumberUtil;
  */
 public class MutableLong extends Number implements Comparable<MutableLong>, Mutable<Number> {
 
-    /**
-     * Required for serialization support.
-     *
-     * @see java.io.Serializable
-     */
-    private static final long serialVersionUID = 62986528375L;
-
     /** The mutable value. */
     private long value;
 
@@ -67,7 +60,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @return the value as a Long, never null
      */
     @Override
-    public Long getValue() {
+    public Long get() {
         return this.value;
     }
 
@@ -76,7 +69,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      *
      * @param value  the value to set
      */
-    public void setValue(final long value) {
+    public void set(final long value) {
         this.value = value;
     }
 
@@ -87,7 +80,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @throws NullPointerException if the object is null
      */
     @Override
-    public void setValue(final Number value) {
+    public void set(final Number value) {
         this.value = value.longValue();
     }
 

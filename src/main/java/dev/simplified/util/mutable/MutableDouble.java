@@ -9,13 +9,6 @@ package dev.sbs.api.util.mutable;
  */
 public class MutableDouble extends Number implements Comparable<MutableDouble>, Mutable<Number> {
 
-    /**
-     * Required for serialization support.
-     *
-     * @see java.io.Serializable
-     */
-    private static final long serialVersionUID = 1587163916L;
-
     /** The mutable value. */
     private double value;
 
@@ -60,7 +53,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @return the value as a Double, never null
      */
     @Override
-    public Double getValue() {
+    public Double get() {
         return this.value;
     }
 
@@ -69,7 +62,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      *
      * @param value  the value to set
      */
-    public void setValue(final double value) {
+    public void set(final double value) {
         this.value = value;
     }
 
@@ -80,7 +73,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @throws NullPointerException if the object is null
      */
     @Override
-    public void setValue(final Number value) {
+    public void set(final Number value) {
         this.value = value.doubleValue();
     }
 

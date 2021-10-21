@@ -11,13 +11,6 @@ import dev.sbs.api.util.helper.NumberUtil;
  */
 public class MutableShort extends Number implements Comparable<MutableShort>, Mutable<Number> {
 
-    /**
-     * Required for serialization support.
-     *
-     * @see java.io.Serializable
-     */
-    private static final long serialVersionUID = -2135791679L;
-
     /** The mutable value. */
     private short value;
 
@@ -67,7 +60,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @return the value as a Short, never null
      */
     @Override
-    public Short getValue() {
+    public Short get() {
         return this.value;
     }
 
@@ -76,7 +69,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      *
      * @param value  the value to set
      */
-    public void setValue(final short value) {
+    public void set(final short value) {
         this.value = value;
     }
 
@@ -87,7 +80,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @throws NullPointerException if the object is null
      */
     @Override
-    public void setValue(final Number value) {
+    public void set(final Number value) {
         this.value = value.shortValue();
     }
 
