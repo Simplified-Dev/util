@@ -1,4 +1,4 @@
-package dev.sbs.api.util.mutable.tuple.pair;
+package dev.sbs.api.util.mutable.pair;
 
 import dev.sbs.api.util.builder.hash.CompareToBuilder;
 import org.jetbrains.annotations.NotNull;

@@ -1,4 +1,4 @@
-package dev.sbs.api.util.mutable.tuple.triple;
+package dev.sbs.api.util.mutable.triple;
 
 import dev.sbs.api.util.builder.hash.CompareToBuilder;
 import dev.sbs.api.util.builder.hash.EqualsBuilder;

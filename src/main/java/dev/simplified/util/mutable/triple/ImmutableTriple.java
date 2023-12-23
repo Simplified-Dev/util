@@ -1,4 +1,4 @@
-package dev.sbs.api.util.mutable.tuple.triple;
+package dev.sbs.api.util.mutable.triple;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
