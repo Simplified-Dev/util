@@ -1,9 +1,11 @@
 package dev.sbs.api.util;
 
+import dev.sbs.api.SimplifiedApi;
 import dev.sbs.api.collection.concurrent.Concurrent;
 import dev.sbs.api.collection.concurrent.ConcurrentMap;
 import dev.sbs.api.stream.pair.Pair;
 import lombok.Cleanup;
+import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 import org.jetbrains.annotations.NotNull;
@@ -11,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -216,9 +219,15 @@ public final class SystemUtil {
     public static final String USER_TIMEZONE = getSystemProperty("user.timezone");
 
     /**
-     * <p>
+     * Retrieves a map of environment variables from the `.env` file in the resources folder and the
+     * operating system environment variables. Variables defined in the `.env` file are overridden by those
+     * from the operating system if duplicates exist.
+     */
+    @Getter
+    private static @NotNull ConcurrentMap<String, String> env = loadEnvironmentVariables().toUnmodifiableMap();
+
+    /**
      * Gets the Java home directory as a {@code File}.
-     * </p>
      *
      * @return a directory
      * @throws SecurityException if a security manager exists and its {@code checkPropertyAccess} method doesn't allow
@@ -230,9 +239,7 @@ public final class SystemUtil {
     }
 
     /**
-     * <p>
      * Gets the Java IO temporary directory as a {@code File}.
-     * </p>
      *
      * @return a directory
      * @throws SecurityException if a security manager exists and its {@code checkPropertyAccess} method doesn't allow
@@ -244,9 +251,7 @@ public final class SystemUtil {
     }
 
     /**
-     * <p>
      * Gets the user directory as a {@code File}.
-     * </p>
      *
      * @return a directory
      * @throws SecurityException if a security manager exists and its {@code checkPropertyAccess} method doesn't allow
@@ -258,9 +263,7 @@ public final class SystemUtil {
     }
 
     /**
-     * <p>
      * Gets the user home directory as a {@code File}.
-     * </p>
      *
      * @return a directory
      * @throws SecurityException if a security manager exists and its {@code checkPropertyAccess} method doesn't allow
@@ -290,13 +293,10 @@ public final class SystemUtil {
     }
 
     /**
-     * <p>
      * Gets a System property, defaulting to {@code null} if the property cannot be read.
-     * </p>
      * <p>
      * If a {@code SecurityException} is caught, the return value is {@code null} and a message is written to
      * {@code System.err}.
-     * </p>
      *
      * @param property the system property name
      * @return the system property value or {@code null} if a security problem occurs
@@ -311,34 +311,44 @@ public final class SystemUtil {
             return null;
         }
     }
-    public static @NotNull ConcurrentMap<String, String> getEnvironmentVariables() {
-        ConcurrentMap<String, String> env = Concurrent.newMap();
 
-        // Load src/main/resources/.env
-        InputStream file = getResource("../.env");
+    private static @NotNull ConcurrentMap<String, String> readEnvironmentFile(@Nullable InputStream inputStream) {
+        ConcurrentMap<String, String> variables = Concurrent.newMap();
 
-        if (file != null) {
-            Scanner scanner = new Scanner(file);
+        if (inputStream != null) {
+            Scanner scanner = new Scanner(inputStream);
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
 
                 if (line.contains("=")) {
                     String[] pair = line.split("=");
-                    env.put(pair[0], pair.length == 2 ? pair[1] : "");
+                    variables.put(pair[0], pair.length == 2 ? pair[1] : "");
                 }
-            }
-
-            try {
-                file.close();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
             }
         }
 
+        return variables;
+    }
+
+    private static @NotNull ConcurrentMap<String, String> loadEnvironmentVariables() {
+        ConcurrentMap<String, String> variables = Concurrent.newMap();
+
+        // Load src/main/resources/.env
+        try {
+            @Cleanup InputStream resourceFile = getResource("../.env");
+            variables.putAll(readEnvironmentFile(resourceFile));
+        } catch (Exception ignore) { }
+
+        // Load <working directory>/.env
+        try {
+            @Cleanup InputStream localFile = new FileInputStream(SimplifiedApi.getCurrentDirectory() + FILE_SEPARATOR + ".env");
+            variables.putAll(readEnvironmentFile(localFile));
+        } catch (Exception ignore) { }
+
         // Override From OS
-        env.putAll(System.getenv());
-        return env;
+        variables.putAll(System.getenv());
+        return variables;
     }
 
     /**
@@ -348,7 +358,7 @@ public final class SystemUtil {
      * @return the value of the environment variable
      */
     public static @NotNull Optional<String> getEnv(@NotNull String variableName) {
-        return getEnvironmentVariables()
+        return getEnv()
             .entrySet()
             .stream()
             .filter(entry -> entry.getKey().equalsIgnoreCase(variableName))
@@ -363,7 +373,7 @@ public final class SystemUtil {
      * @return the key-value of the environment variable
      */
     public static @NotNull Pair<String, Optional<String>> getEnvPair(@NotNull String variableName) {
-        return getEnvironmentVariables()
+        return getEnv()
             .entrySet()
             .stream()
             .filter(entry -> entry.getKey().equalsIgnoreCase(variableName))
