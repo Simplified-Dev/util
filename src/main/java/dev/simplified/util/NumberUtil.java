@@ -294,7 +294,7 @@ public final class NumberUtil {
     }
 
     public static <N extends Number> N to(Object value, Number defaultValue, Class<N> clazz) {
-        Reflection<N> number = Reflection.of(clazz);
+        Reflection<N> number = new Reflection<>(clazz);
         String strValue = String.valueOf(value);
         return clazz.cast(number.newInstance(isCreatable(strValue) ? new BigDecimal(strValue).toPlainString() : String.valueOf(defaultValue)));
     }
