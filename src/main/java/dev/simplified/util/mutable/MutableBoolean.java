@@ -4,8 +4,10 @@ import java.io.Serializable;
 
 /**
  * A mutable {@code boolean} wrapper.
+ *
  * <p>
- * Note that as MutableBoolean does not extend Boolean, it is not treated by String.format as a Boolean parameter.
+ * Note that as {@code MutableBoolean} does not extend {@link Boolean}, it is not treated by
+ * {@link String#format} as a {@link Boolean} parameter.
  *
  * @see Boolean
  */
@@ -15,34 +17,33 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
     private boolean value;
 
     /**
-     * Constructs a new MutableBoolean with the default value of false.
+     * Constructs a new {@code MutableBoolean} with the default value of {@code false}.
      */
     public MutableBoolean() { }
 
     /**
-     * Constructs a new MutableBoolean with the specified value.
+     * Constructs a new {@code MutableBoolean} with the specified value.
      *
-     * @param value  the initial value to store
+     * @param value the initial value to store
      */
     public MutableBoolean(final boolean value) {
         this.value = value;
     }
 
     /**
-     * Constructs a new MutableBoolean with the specified value.
+     * Constructs a new {@code MutableBoolean} with the specified value.
      *
-     * @param value  the initial value to store, not null
-     * @throws NullPointerException if the object is null
+     * @param value the initial value to store, not null
+     * @throws NullPointerException if the value is null
      */
     public MutableBoolean(final Boolean value) {
         this.value = value;
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Gets the value as a Boolean instance.
+     * Returns the value as a {@link Boolean} instance.
      *
-     * @return the value as a Boolean, never null
+     * @return the value as a {@link Boolean}, never null
      */
     @Override
     public Boolean get() {
@@ -50,42 +51,39 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
     }
 
     /**
-     * Sets the value.
+     * Sets the value from a primitive {@code boolean}.
      *
-     * @param value  the value to set
+     * @param value the value to set
      */
     public void set(final boolean value) {
         this.value = value;
     }
 
     /**
-     * Sets the value to false.
-     *
+     * Sets the value to {@code false}.
      */
     public void setFalse() {
         this.value = false;
     }
 
     /**
-     * Sets the value to true.
-     *
+     * Sets the value to {@code true}.
      */
     public void setTrue() {
         this.value = true;
     }
 
     /**
-     * Sets the value from any Boolean instance.
+     * Sets the value from a {@link Boolean} instance.
      *
-     * @param value  the value to set, not null
-     * @throws NullPointerException if the object is null
+     * @param value the value to set, not null
+     * @throws NullPointerException if the value is null
      */
     @Override
     public void set(final Boolean value) {
         this.value = value;
     }
 
-    //-----------------------------------------------------------------------
     /**
      * Checks if the current value is {@code true}.
      *
@@ -104,34 +102,31 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
         return !value;
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Returns the value of this MutableBoolean as a boolean.
+     * Returns the primitive {@code boolean} value of this mutable.
      *
-     * @return the boolean value represented by this object.
+     * @return the boolean value represented by this object
      */
     public boolean booleanValue() {
         return value;
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Gets this mutable as an instance of Boolean.
+     * Converts this mutable to a {@link Boolean} instance.
      *
-     * @return a Boolean instance containing the value from this mutable, never null
+     * @return a {@link Boolean} containing this mutable's value, never null
      */
     public Boolean toBoolean() {
         return booleanValue();
     }
 
-    //-----------------------------------------------------------------------
     /**
      * Compares this object to the specified object. The result is {@code true} if and only if the argument is
-     * not {@code null} and is an {@code MutableBoolean} object that contains the same
+     * not {@code null} and is a {@code MutableBoolean} object that contains the same
      * {@code boolean} value as this object.
      *
-     * @param obj  the object to compare with, null returns false
-     * @return {@code true} if the objects are the same; {@code false} otherwise.
+     * @param obj the object to compare with, {@code null} returns {@code false}
+     * @return {@code true} if the objects are equal; {@code false} otherwise
      */
     @Override
     public boolean equals(final Object obj) {
@@ -142,31 +137,28 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
     }
 
     /**
-     * Returns a suitable hash code for this mutable.
+     * Returns a hash code consistent with {@link Boolean#hashCode()}.
      *
-     * @return the hash code returned by {@code Boolean.TRUE} or {@code Boolean.FALSE}
+     * @return the hash code of {@code Boolean.TRUE} or {@code Boolean.FALSE}
      */
     @Override
     public int hashCode() {
         return value ? Boolean.TRUE.hashCode() : Boolean.FALSE.hashCode();
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Compares this mutable to another in ascending order.
+     * Compares this mutable to another in ascending order, where {@code false} is less than {@code true}.
      *
-     * @param other  the other mutable to compare to, not null
+     * @param other the other mutable to compare to, not null
      * @return negative if this is less, zero if equal, positive if greater
-     *  where false is less than true
      */
     @Override
     public int compareTo(final MutableBoolean other) {
         return (this.value == other.value) ? 0 : (this.value ? 1 : -1);
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Returns the String value of this mutable.
+     * Returns the string representation of this mutable's value.
      *
      * @return the mutable value as a string
      */

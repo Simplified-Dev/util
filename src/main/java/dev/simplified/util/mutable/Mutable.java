@@ -10,20 +10,18 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Provides mutable access to a value.
+ * A generic interface providing mutable access to a value.
  * <p>
- * {@code Mutable} is used as a generic interface to the implementations in this package.
- * <p>
- * A typical use case would be to enable a primitive or string to be passed to a method and allow that method to
- * effectively change the value of the primitive/string. Another use case is to store a frequently changing primitive in
- * a collection (for example a total in a map) without needing to create new Integer/Long wrapper objects.
+ * A typical use case is to pass a primitive or string to a method and allow that method to
+ * effectively change the value. Another use case is to store a frequently changing primitive in
+ * a collection (for example a total in a map) without creating new wrapper objects.
  *
  * @param <T> the type to set and get
  */
 public interface Mutable<T> {
 
     /**
-     * Gets the value of this mutable.
+     * Returns the value of this mutable.
      *
      * @return the stored value
      */
@@ -33,34 +31,34 @@ public interface Mutable<T> {
      * Sets the value of this mutable.
      *
      * @param value the value to store
-     * @throws NullPointerException if the object is null and null is invalid
-     * @throws ClassCastException if the type is invalid
+     * @throws NullPointerException if the value is null and null is not permitted
+     * @throws ClassCastException if the value type is incompatible
      */
     void set(T value);
 
     /**
-     * Creates a new instance of {@code Mutable}.
+     * Creates a new {@link Mutable} with a {@code null} initial value.
      *
-     * @param <T> the type of the value to be stored in the mutable instance
-     * @return a new {@code Mutable} instance containing the specified value
+     * @param <T> the type of the value to be stored
+     * @return a new mutable instance
      */
     static <T> @NotNull Mutable<T> of() {
         return new Impl<>();
     }
 
     /**
-     * Creates a new instance of {@code Mutable} with an initial value.
+     * Creates a new {@link Mutable} with the given initial value.
      *
-     * @param <T> the type of the value to be stored in the mutable instance
-     * @param value the initial value may be null
-     * @return a new {@code Mutable} instance containing the specified value
+     * @param <T> the type of the value to be stored
+     * @param value the initial value, may be null
+     * @return a new mutable instance containing the specified value
      */
     static <T> @NotNull Mutable<T> of(@Nullable T value) {
         return new Impl<>(value);
     }
 
     /**
-     * A mutable {@code Object} wrapper.
+     * A mutable {@link Object} wrapper implementing {@link Mutable} and {@link Serializable}.
      *
      * @param <T> the type to set and get
      */
@@ -82,16 +80,11 @@ public interface Mutable<T> {
         }
 
         /**
-         * <p>
          * Compares this object against the specified object. The result is {@code true} if and only if the argument
-         * is not {@code null} and is a {@code MutableObject} object that contains the same {@code T}
-         * value as this object.
-         * </p>
+         * is not {@code null} and is an {@code Impl} object that contains an equal value.
          *
-         * @param obj  the object to compare with, {@code null} returns {@code false}
-         * @return  {@code true} if the objects are the same;
-         *          {@code true} if the objects have equivalent {@code value} fields;
-         *          {@code false} otherwise.
+         * @param obj the object to compare with, {@code null} returns {@code false}
+         * @return {@code true} if the objects are equal; {@code false} otherwise
          */
         @Override
         public boolean equals(final Object obj) {
@@ -110,7 +103,9 @@ public interface Mutable<T> {
         }
 
         /**
-         * Returns the value's hash code or {@code 0} if the value is {@code null}.
+         * Returns the value's hash code, or {@code 0} if the value is {@code null}.
+         *
+         * @return the hash code of the stored value
          */
         @Override
         public int hashCode() {
@@ -118,7 +113,9 @@ public interface Mutable<T> {
         }
 
         /**
-         * Returns the String value of this mutable.
+         * Returns the string representation of the stored value, or {@code "null"} if the value is {@code null}.
+         *
+         * @return the string form of this mutable's value
          */
         @Override
         public String toString() {

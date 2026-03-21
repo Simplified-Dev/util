@@ -3,7 +3,8 @@ package dev.sbs.api.util.mutable;
 /**
  * A mutable {@code float} wrapper.
  * <p>
- * Note that as MutableFloat does not extend Float, it is not treated by String.format as a Float parameter.
+ * Note that as {@code MutableFloat} does not extend {@link Float}, it is not treated by
+ * {@link String#format} as a {@link Float} parameter.
  *
  * @see Float
  */
@@ -13,44 +14,43 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
     private float value;
 
     /**
-     * Constructs a new MutableFloat with the default value of zero.
+     * Constructs a new {@code MutableFloat} with the default value of zero.
      */
     public MutableFloat() { }
 
     /**
-     * Constructs a new MutableFloat with the specified value.
+     * Constructs a new {@code MutableFloat} with the specified value.
      *
-     * @param value  the initial value to store
+     * @param value the initial value to store
      */
     public MutableFloat(final float value) {
         this.value = value;
     }
 
     /**
-     * Constructs a new MutableFloat with the specified value.
+     * Constructs a new {@code MutableFloat} with the specified value.
      *
-     * @param value  the initial value to store, not null
-     * @throws NullPointerException if the object is null
+     * @param value the initial value to store, not null
+     * @throws NullPointerException if the value is null
      */
     public MutableFloat(final Number value) {
         this.value = value.floatValue();
     }
 
     /**
-     * Constructs a new MutableFloat parsing the given string.
+     * Constructs a new {@code MutableFloat} by parsing the given string.
      *
-     * @param value  the string to parse, not null
+     * @param value the string to parse, not null
      * @throws NumberFormatException if the string cannot be parsed into a float
      */
     public MutableFloat(final String value) {
         this.value = Float.parseFloat(value);
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Gets the value as a Float instance.
+     * Returns the value as a {@link Float} instance.
      *
-     * @return the value as a Float, never null
+     * @return the value as a {@link Float}, never null
      */
     @Override
     public Float get() {
@@ -58,30 +58,29 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
     }
 
     /**
-     * Sets the value.
+     * Sets the value from a primitive {@code float}.
      *
-     * @param value  the value to set
+     * @param value the value to set
      */
     public void set(final float value) {
         this.value = value;
     }
 
     /**
-     * Sets the value from any Number instance.
+     * Sets the value from a {@link Number} instance.
      *
-     * @param value  the value to set, not null
-     * @throws NullPointerException if the object is null
+     * @param value the value to set, not null
+     * @throws NullPointerException if the value is null
      */
     @Override
     public void set(final Number value) {
         this.value = value.floatValue();
     }
 
-    //-----------------------------------------------------------------------
     /**
      * Checks whether the float value is the special NaN value.
      *
-     * @return true if NaN
+     * @return {@code true} if the value is NaN
      */
     public boolean isNaN() {
         return Float.isNaN(value);
@@ -90,26 +89,23 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
     /**
      * Checks whether the float value is infinite.
      *
-     * @return true if infinite
+     * @return {@code true} if the value is infinite
      */
     public boolean isInfinite() {
         return Float.isInfinite(value);
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Increments the value.
-     *
+     * Increments the value by one.
      */
     public void increment() {
         value++;
     }
 
     /**
-     * Increments this instance's value by 1; this method returns the value associated with the instance
-     * immediately prior to the increment operation. This method is not thread safe.
+     * Returns the current value and then increments by one. This method is not thread safe.
      *
-     * @return the value associated with the instance before it was incremented
+     * @return the value before incrementing
      */
     public float getAndIncrement() {
         final float last = value;
@@ -118,10 +114,9 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
     }
 
     /**
-     * Increments this instance's value by 1; this method returns the value associated with the instance
-     * immediately after the increment operation. This method is not thread safe.
+     * Increments by one and then returns the new value. This method is not thread safe.
      *
-     * @return the value associated with the instance after it is incremented
+     * @return the value after incrementing
      */
     public float incrementAndGet() {
         value++;
@@ -129,17 +124,16 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
     }
 
     /**
-     * Decrements the value.
+     * Decrements the value by one.
      */
     public void decrement() {
         value--;
     }
 
     /**
-     * Decrements this instance's value by 1; this method returns the value associated with the instance
-     * immediately prior to the decrement operation. This method is not thread safe.
+     * Returns the current value and then decrements by one. This method is not thread safe.
      *
-     * @return the value associated with the instance before it was decremented
+     * @return the value before decrementing
      */
     public float getAndDecrement() {
         final float last = value;

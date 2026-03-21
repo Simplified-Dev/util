@@ -5,7 +5,8 @@ import dev.sbs.api.util.NumberUtil;
 /**
  * A mutable {@code long} wrapper.
  * <p>
- * Note that as MutableLong does not extend Long, it is not treated by String.format as a Long parameter.
+ * Note that as {@code MutableLong} does not extend {@link Long}, it is not treated by
+ * {@link String#format} as a {@link Long} parameter.
  *
  * @see Long
  */
@@ -15,49 +16,43 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
     private long value;
 
     /**
-     * Constructs a new MutableLong with the default value of zero.
+     * Constructs a new {@code MutableLong} with the default value of zero.
      */
-    public MutableLong() {
-        super();
-    }
+    public MutableLong() { }
 
     /**
-     * Constructs a new MutableLong with the specified value.
+     * Constructs a new {@code MutableLong} with the specified value.
      *
-     * @param value  the initial value to store
+     * @param value the initial value to store
      */
     public MutableLong(final long value) {
-        super();
         this.value = value;
     }
 
     /**
-     * Constructs a new MutableLong with the specified value.
+     * Constructs a new {@code MutableLong} with the specified value.
      *
-     * @param value  the initial value to store, not null
-     * @throws NullPointerException if the object is null
+     * @param value the initial value to store, not null
+     * @throws NullPointerException if the value is null
      */
     public MutableLong(final Number value) {
-        super();
         this.value = value.longValue();
     }
 
     /**
-     * Constructs a new MutableLong parsing the given string.
+     * Constructs a new {@code MutableLong} by parsing the given string.
      *
-     * @param value  the string to parse, not null
+     * @param value the string to parse, not null
      * @throws NumberFormatException if the string cannot be parsed into a long
      */
     public MutableLong(final String value) {
-        super();
         this.value = Long.parseLong(value);
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Gets the value as a Long instance.
+     * Returns the value as a {@link Long} instance.
      *
-     * @return the value as a Long, never null
+     * @return the value as a {@link Long}, never null
      */
     @Override
     public Long get() {
@@ -65,39 +60,36 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
     }
 
     /**
-     * Sets the value.
+     * Sets the value from a primitive {@code long}.
      *
-     * @param value  the value to set
+     * @param value the value to set
      */
     public void set(final long value) {
         this.value = value;
     }
 
     /**
-     * Sets the value from any Number instance.
+     * Sets the value from a {@link Number} instance.
      *
-     * @param value  the value to set, not null
-     * @throws NullPointerException if the object is null
+     * @param value the value to set, not null
+     * @throws NullPointerException if the value is null
      */
     @Override
     public void set(final Number value) {
         this.value = value.longValue();
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Increments the value.
-     *
+     * Increments the value by one.
      */
     public void increment() {
         value++;
     }
 
     /**
-     * Increments this instance's value by 1; this method returns the value associated with the instance
-     * immediately prior to the increment operation. This method is not thread safe.
+     * Returns the current value and then increments by one. This method is not thread safe.
      *
-     * @return the value associated with the instance before it was incremented
+     * @return the value before incrementing
      */
     public long getAndIncrement() {
         final long last = value;
@@ -106,10 +98,9 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
     }
 
     /**
-     * Increments this instance's value by 1; this method returns the value associated with the instance
-     * immediately after the increment operation. This method is not thread safe.
+     * Increments by one and then returns the new value. This method is not thread safe.
      *
-     * @return the value associated with the instance after it is incremented
+     * @return the value after incrementing
      */
     public long incrementAndGet() {
         value++;
@@ -117,18 +108,16 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
     }
 
     /**
-     * Decrements the value.
-     *
+     * Decrements the value by one.
      */
     public void decrement() {
         value--;
     }
 
     /**
-     * Decrements this instance's value by 1; this method returns the value associated with the instance
-     * immediately prior to the decrement operation. This method is not thread safe.
+     * Returns the current value and then decrements by one. This method is not thread safe.
      *
-     * @return the value associated with the instance before it was decremented
+     * @return the value before decrementing
      */
     public long getAndDecrement() {
         final long last = value;
@@ -137,61 +126,58 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
     }
 
     /**
-     * Decrements this instance's value by 1; this method returns the value associated with the instance
-     * immediately after the decrement operation. This method is not thread safe.
+     * Decrements by one and then returns the new value. This method is not thread safe.
      *
-     * @return the value associated with the instance after it is decremented
+     * @return the value after decrementing
      */
     public long decrementAndGet() {
         value--;
         return value;
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Adds a value to the value of this instance.
+     * Adds the given operand to this instance's value.
      *
-     * @param operand  the value to add, not null
+     * @param operand the value to add
      */
     public void add(final long operand) {
         this.value += operand;
     }
 
     /**
-     * Adds a value to the value of this instance.
+     * Adds the given operand to this instance's value.
      *
-     * @param operand  the value to add, not null
-     * @throws NullPointerException if the object is null
+     * @param operand the value to add, not null
+     * @throws NullPointerException if the operand is null
      */
     public void add(final Number operand) {
         this.value += operand.longValue();
     }
 
     /**
-     * Subtracts a value from the value of this instance.
+     * Subtracts the given operand from this instance's value.
      *
-     * @param operand  the value to subtract, not null
+     * @param operand the value to subtract
      */
     public void subtract(final long operand) {
         this.value -= operand;
     }
 
     /**
-     * Subtracts a value from the value of this instance.
+     * Subtracts the given operand from this instance's value.
      *
-     * @param operand  the value to subtract, not null
-     * @throws NullPointerException if the object is null
+     * @param operand the value to subtract, not null
+     * @throws NullPointerException if the operand is null
      */
     public void subtract(final Number operand) {
         this.value -= operand.longValue();
     }
 
     /**
-     * Increments this instance's value by {@code operand}; this method returns the value associated with the instance
-     * immediately after the addition operation. This method is not thread safe.
+     * Adds the given operand and then returns the new value. This method is not thread safe.
      *
-     * @param operand the quantity to add, not null
-     * @return the value associated with this instance after adding the operand
+     * @param operand the quantity to add
+     * @return the value after adding the operand
      */
     public long addAndGet(final long operand) {
         this.value += operand;
@@ -199,12 +185,11 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
     }
 
     /**
-     * Increments this instance's value by {@code operand}; this method returns the value associated with the instance
-     * immediately after the addition operation. This method is not thread safe.
+     * Adds the given operand and then returns the new value. This method is not thread safe.
      *
      * @param operand the quantity to add, not null
      * @throws NullPointerException if {@code operand} is null
-     * @return the value associated with this instance after adding the operand
+     * @return the value after adding the operand
      */
     public long addAndGet(final Number operand) {
         this.value += operand.longValue();
@@ -212,11 +197,10 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
     }
 
     /**
-     * Increments this instance's value by {@code operand}; this method returns the value associated with the instance
-     * immediately prior to the addition operation. This method is not thread safe.
+     * Returns the current value and then adds the given operand. This method is not thread safe.
      *
-     * @param operand the quantity to add, not null
-     * @return the value associated with this instance immediately before the operand was added
+     * @param operand the quantity to add
+     * @return the value before adding the operand
      */
     public long getAndAdd(final long operand) {
         final long last = value;
@@ -225,12 +209,11 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
     }
 
     /**
-     * Increments this instance's value by {@code operand}; this method returns the value associated with the instance
-     * immediately prior to the addition operation. This method is not thread safe.
+     * Returns the current value and then adds the given operand. This method is not thread safe.
      *
      * @param operand the quantity to add, not null
      * @throws NullPointerException if {@code operand} is null
-     * @return the value associated with this instance immediately before the operand was added
+     * @return the value before adding the operand
      */
     public long getAndAdd(final Number operand) {
         final long last = value;
@@ -238,66 +221,46 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
         return last;
     }
 
-    //-----------------------------------------------------------------------
-    // shortValue and byteValue rely on Number implementation
-    /**
-     * Returns the value of this MutableLong as an int.
-     *
-     * @return the numeric value represented by this object after conversion to type int.
-     */
+    /** {@inheritDoc} */
     @Override
     public int intValue() {
         return (int) value;
     }
 
-    /**
-     * Returns the value of this MutableLong as a long.
-     *
-     * @return the numeric value represented by this object after conversion to type long.
-     */
+    /** {@inheritDoc} */
     @Override
     public long longValue() {
         return value;
     }
 
-    /**
-     * Returns the value of this MutableLong as a float.
-     *
-     * @return the numeric value represented by this object after conversion to type float.
-     */
+    /** {@inheritDoc} */
     @Override
     public float floatValue() {
         return value;
     }
 
-    /**
-     * Returns the value of this MutableLong as a double.
-     *
-     * @return the numeric value represented by this object after conversion to type double.
-     */
+    /** {@inheritDoc} */
     @Override
     public double doubleValue() {
         return value;
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Gets this mutable as an instance of Long.
+     * Converts this mutable to a {@link Long} instance.
      *
-     * @return a Long instance containing the value from this mutable, never null
+     * @return a {@link Long} containing this mutable's value, never null
      */
     public Long toLong() {
         return longValue();
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Compares this object to the specified object. The result is {@code true} if and only if the argument
+     * Compares this object against the specified object. The result is {@code true} if and only if the argument
      * is not {@code null} and is a {@code MutableLong} object that contains the same {@code long}
      * value as this object.
      *
-     * @param obj  the object to compare with, null returns false
-     * @return {@code true} if the objects are the same; {@code false} otherwise.
+     * @param obj the object to compare with, {@code null} returns {@code false}
+     * @return {@code true} if the objects are equal; {@code false} otherwise
      */
     @Override
     public boolean equals(final Object obj) {
@@ -308,20 +271,19 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
     }
 
     /**
-     * Returns a suitable hash code for this mutable.
+     * Returns a hash code for this mutable.
      *
-     * @return a suitable hash code
+     * @return the hash code of the stored value
      */
     @Override
     public int hashCode() {
         return (int) (value ^ (value >>> 32));
     }
 
-    //-----------------------------------------------------------------------
     /**
      * Compares this mutable to another in ascending order.
      *
-     * @param other  the other mutable to compare to, not null
+     * @param other the other mutable to compare to, not null
      * @return negative if this is less, zero if equal, positive if greater
      */
     @Override
@@ -329,9 +291,8 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
         return NumberUtil.compare(this.value, other.value);
     }
 
-    //-----------------------------------------------------------------------
     /**
-     * Returns the String value of this mutable.
+     * Returns the string representation of this mutable's value.
      *
      * @return the mutable value as a string
      */
