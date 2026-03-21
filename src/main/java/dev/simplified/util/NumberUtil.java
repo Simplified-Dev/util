@@ -1034,7 +1034,7 @@ public final class NumberUtil {
         if (decPos > -1) { // there is a decimal point
             if (expPos > -1) { // there is an exponent
                 if (expPos < decPos || expPos > str.length()) { // prevents double exponent causing IOOBE
-                    throw new NumberFormatException(str + " is not a valid number.");
+                    throw new NumberFormatException(str + " is not a valid number");
                 }
                 dec = str.substring(decPos + 1, expPos);
             } else {
@@ -1044,7 +1044,7 @@ public final class NumberUtil {
         } else {
             if (expPos > -1) {
                 if (expPos > str.length()) { // prevents double exponent causing IOOBE
-                    throw new NumberFormatException(str + " is not a valid number.");
+                    throw new NumberFormatException(str + " is not a valid number");
                 }
                 mant = getMantissa(str, expPos);
             } else {
@@ -1075,7 +1075,7 @@ public final class NumberUtil {
                         return createBigInteger(numeric);
 
                     }
-                    throw new NumberFormatException(str + " is not a valid number.");
+                    throw new NumberFormatException(str + " is not a valid number");
                 case 'f' :
                 case 'F' :
                     try {
@@ -1107,7 +1107,7 @@ public final class NumberUtil {
                     }
                     //$FALL-THROUGH$
                 default :
-                    throw new NumberFormatException(str + " is not a valid number.");
+                    throw new NumberFormatException(str + " is not a valid number");
 
             }
         }

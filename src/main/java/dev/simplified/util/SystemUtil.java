@@ -411,13 +411,13 @@ public final class SystemUtil {
         try (InputStream inputStream = getResource(resourcePath)) {
             if (!directory.exists()) {
                 if (!directory.mkdirs())
-                    throw new IllegalStateException(String.format("Unable to create parent directories for '%s'.", output));
+                    throw new IllegalStateException(String.format("Unable to create parent directories for '%s'", output));
             }
 
             if (replace)
                 output.delete();
             else if (output.exists())
-                throw new IllegalStateException(String.format("Output file '%s' already exists.", output));
+                throw new IllegalStateException(String.format("Output file '%s' already exists", output));
 
             try (FileOutputStream outputStream = new FileOutputStream(output)) {
                 byte[] buffer = new byte[1024];
@@ -427,7 +427,7 @@ public final class SystemUtil {
                     outputStream.write(buffer, 0, length);
             }
         } catch (Exception exception) {
-            throw new IllegalStateException(String.format("Unable to save resource '%s' to '%s'.", resourcePath, output), exception);
+            throw new IllegalStateException(String.format("Unable to save resource '%s' to '%s'", resourcePath, output), exception);
         }
     }
 

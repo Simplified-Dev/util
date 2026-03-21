@@ -3070,24 +3070,23 @@ public final class ArrayUtil {
      * @return whether the array is sorted
      */
     public static <T> boolean isSorted(final T[] array, final Comparator<T> comparator) {
-        if (comparator == null) {
-            throw new IllegalArgumentException("Comparator should not be null.");
-        }
+        if (comparator == null)
+            throw new IllegalArgumentException("Comparator should not be null");
 
-        if (array == null || array.length < 2) {
+        if (array == null || array.length < 2)
             return true;
-        }
 
         T previous = array[0];
         final int n = array.length;
         for (int i = 1; i < n; i++) {
             final T current = array[i];
-            if (comparator.compare(previous, current) > 0) {
+
+            if (comparator.compare(previous, current) > 0)
                 return false;
-            }
 
             previous = current;
         }
+
         return true;
     }
 

@@ -222,7 +222,7 @@ public final class StringUtil {
      * </pre>
      *
      * @param str  the String to check, may be null
-     * @param abbrevMarker  the String used as replacement marker
+     * @param abbrevMarker  the String used as a replacement marker
      * @param maxWidth  maximum length of result String, must be at least {@code abbrevMarker.length + 1}
      * @return abbreviated String, {@code null} if null String input
      * @throws IllegalArgumentException if the width is too small
@@ -2417,18 +2417,15 @@ public final class StringUtil {
      *  -1 if no match or {@code null} string input
      */
     public static int indexOf(final CharSequence seq, final CharSequence searchSeq, final int startPos) {
-        if (seq == null || searchSeq == null) {
+        if (seq == null || searchSeq == null)
             return INDEX_NOT_FOUND;
-        }
 
-        if (seq instanceof String) {
-            return ((String) seq).indexOf(searchSeq.toString(), startPos);
-        } else if (seq instanceof java.lang.StringBuilder) {
-            return ((java.lang.StringBuilder) seq).indexOf(searchSeq.toString(), startPos);
-        } else if (seq instanceof StringBuffer) {
-            return ((StringBuffer) seq).indexOf(searchSeq.toString(), startPos);
-        }
-        return seq.toString().indexOf(searchSeq.toString(), startPos);
+        return switch (seq) {
+            case String s -> s.indexOf(searchSeq.toString(), startPos);
+            case StringBuilder stringBuilder -> stringBuilder.indexOf(searchSeq.toString(), startPos);
+            case StringBuffer stringBuffer -> stringBuffer.indexOf(searchSeq.toString(), startPos);
+            default -> seq.toString().indexOf(searchSeq.toString(), startPos);
+        };
     }
 
     /**
@@ -4789,43 +4786,51 @@ public final class StringUtil {
         }
 
         if (searchSeq instanceof String) {
-            if (seq instanceof String) {
-                return ((String) seq).lastIndexOf((String) searchSeq, startPos);
-            } else if (seq instanceof java.lang.StringBuilder) {
-                return ((java.lang.StringBuilder) seq).lastIndexOf((String) searchSeq, startPos);
-            } else if (seq instanceof StringBuffer) {
-                return ((StringBuffer) seq).lastIndexOf((String) searchSeq, startPos);
+            switch (seq) {
+                case String s -> {
+                    return s.lastIndexOf((String) searchSeq, startPos);
+                }
+                case StringBuilder stringBuilder -> {
+                    return stringBuilder.lastIndexOf((String) searchSeq, startPos);
+                }
+                case StringBuffer stringBuffer -> {
+                    return stringBuffer.lastIndexOf((String) searchSeq, startPos);
+                }
+                default -> {
+                }
             }
         }
 
         final int len1 = seq.length();
         final int len2 = searchSeq.length();
 
-        if (startPos > len1) {
+        if (startPos > len1)
             startPos = len1;
-        }
 
-        if (startPos < 0 || len2 > len1) {
+        if (startPos < 0 || len2 > len1)
             return -1;
-        }
 
-        if (len2 == 0) {
+        if (len2 == 0)
             return startPos;
-        }
 
         if (len2 <= TO_STRING_LIMIT) {
-            if (seq instanceof String) {
-                return ((String) seq).lastIndexOf(searchSeq.toString(), startPos);
-            } else if (seq instanceof java.lang.StringBuilder) {
-                return ((java.lang.StringBuilder) seq).lastIndexOf(searchSeq.toString(), startPos);
-            } else if (seq instanceof StringBuffer) {
-                return ((StringBuffer) seq).lastIndexOf(searchSeq.toString(), startPos);
+            switch (seq) {
+                case String s -> {
+                    return s.lastIndexOf(searchSeq.toString(), startPos);
+                }
+                case StringBuilder stringBuilder -> {
+                    return stringBuilder.lastIndexOf(searchSeq.toString(), startPos);
+                }
+                case StringBuffer stringBuffer -> {
+                    return stringBuffer.lastIndexOf(searchSeq.toString(), startPos);
+                }
+                default -> {
+                }
             }
         }
 
-        if (startPos + len2 > len1) {
+        if (startPos + len2 > len1)
             startPos = len1 - len2;
-        }
 
         final char char0 = searchSeq.charAt(0);
 
@@ -4833,17 +4838,16 @@ public final class StringUtil {
         while (true) {
             while (seq.charAt(i) != char0) {
                 i--;
-                if (i < 0) {
+
+                if (i < 0)
                     return -1;
-                }
             }
-            if (checkLaterThan1(seq, searchSeq, len2, i)) {
+            if (checkLaterThan1(seq, searchSeq, len2, i))
                 return i;
-            }
+
             i--;
-            if (i < 0) {
+            if (i < 0)
                 return -1;
-            }
         }
     }
 
@@ -8916,7 +8920,7 @@ public final class StringUtil {
      */
     public static UUID toUUID(String input) {
         if (!isUUID(input))
-            throw new IllegalArgumentException("Not a valid UUID!");
+            throw new IllegalArgumentException("Not a valid UUID");
 
         if (input.contains("-"))
             return UUID.fromString(input); // Already has hyphens
