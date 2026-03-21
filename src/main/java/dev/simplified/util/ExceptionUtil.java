@@ -188,7 +188,7 @@ public final class ExceptionUtil {
      */
     public static Throwable getRootCause(final Throwable throwable) {
         final List<Throwable> list = getThrowableList(throwable);
-        return list.isEmpty() ? null : list.get(list.size() - 1);
+        return list.isEmpty() ? null : list.getLast();
     }
 
     /**
