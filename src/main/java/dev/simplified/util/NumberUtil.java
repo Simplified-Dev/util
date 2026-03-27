@@ -219,21 +219,21 @@ public final class NumberUtil {
      * Generates a random integer between the specified minimum and {@link Integer#MAX_VALUE}.
      *
      * @param minimum the lowest number allowed (inclusive)
-     * @return a random integer between the specified minimum and {@code Integer.MAX_VALUE}
+     * @return a random integer between the specified minimum and {@code Integer.MAX_VALUE} (exclusive)
      */
     public static int rand(int minimum) {
         return rand(minimum, Integer.MAX_VALUE);
     }
 
     /**
-     * Generates a random integer between the specified minimum and maximum (inclusive).
+     * Generates a random integer between the specified minimum and maximum.
      *
      * @param minimum the lowest number allowed (inclusive)
-     * @param maximum the highest number allowed (inclusive)
+     * @param maximum the highest number allowed (exclusive)
      * @return a random integer between the specified boundaries
      */
     public static int rand(int minimum, int maximum) {
-        return ThreadLocalRandom.current().nextInt(minimum, maximum + 1);
+        return (int) ThreadLocalRandom.current().nextLong(minimum, maximum);
     }
 
     /**
