@@ -1,4 +1,4 @@
-package dev.sbs.api.util.time;
+package dev.simplified.util.time;
 
 import lombok.AccessLevel;
 import lombok.Getter;

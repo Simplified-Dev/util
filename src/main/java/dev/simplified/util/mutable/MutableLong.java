@@ -1,6 +1,6 @@
-package dev.sbs.api.util.mutable;
+package dev.simplified.util.mutable;
 
-import dev.sbs.api.util.NumberUtil;
+import dev.simplified.util.NumberUtil;
 
 /**
  * A mutable {@code long} wrapper.

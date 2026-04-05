@@ -1,6 +1,6 @@
-package dev.sbs.api.util;
+package dev.simplified.util;
 
-import dev.sbs.api.util.mutable.MutableInt;
+import dev.simplified.util.mutable.MutableInt;
 import lombok.experimental.UtilityClass;
 
 import java.lang.reflect.Array;

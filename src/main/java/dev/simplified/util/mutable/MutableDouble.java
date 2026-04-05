@@ -1,4 +1,4 @@
-package dev.sbs.api.util.mutable;
+package dev.simplified.util.mutable;
 
 /**
  * A mutable {@code double} wrapper.

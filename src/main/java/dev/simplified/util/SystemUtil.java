@@ -1,9 +1,9 @@
-package dev.sbs.api.util;
+package dev.simplified.util;
 
-import dev.sbs.api.collection.concurrent.Concurrent;
-import dev.sbs.api.collection.concurrent.ConcurrentList;
-import dev.sbs.api.collection.concurrent.ConcurrentMap;
-import dev.sbs.api.tuple.pair.Pair;
+import dev.simplified.collection.concurrent.Concurrent;
+import dev.simplified.collection.concurrent.ConcurrentList;
+import dev.simplified.collection.concurrent.ConcurrentMap;
+import dev.simplified.tuple.pair.Pair;
 import lombok.Cleanup;
 import lombok.Getter;
 import lombok.SneakyThrows;

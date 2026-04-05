@@ -1,6 +1,6 @@
-package dev.sbs.api.util;
+package dev.simplified.util;
 
-import dev.sbs.api.collection.concurrent.linked.MaxSizeLinkedMap;
+import dev.simplified.collection.concurrent.linked.MaxSizeLinkedMap;
 import lombok.experimental.UtilityClass;
 import org.intellij.lang.annotations.Language;
 

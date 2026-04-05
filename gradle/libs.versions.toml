@@ -1,0 +1,7 @@
+[versions]
+lombok = "1.18.36"
+annotations = "26.0.2"
+
+[libraries]
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
+annotations = { group = "org.jetbrains", name = "annotations", version.ref = "annotations" }

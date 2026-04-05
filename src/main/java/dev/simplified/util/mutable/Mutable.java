@@ -1,4 +1,4 @@
-package dev.sbs.api.util.mutable;
+package dev.simplified.util.mutable;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

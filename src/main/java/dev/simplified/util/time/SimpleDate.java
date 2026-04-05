@@ -1,6 +1,6 @@
-package dev.sbs.api.util.time;
+package dev.simplified.util.time;
 
-import dev.sbs.api.util.StringUtil;
+import dev.simplified.util.StringUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;

@@ -1,4 +1,4 @@
-package dev.sbs.api.util;
+package dev.simplified.util;
 
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
