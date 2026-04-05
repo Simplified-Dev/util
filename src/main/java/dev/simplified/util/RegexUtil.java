@@ -1,6 +1,5 @@
 package dev.simplified.util;
 
-import dev.simplified.collection.concurrent.linked.MaxSizeLinkedMap;
 import lombok.experimental.UtilityClass;
 import org.intellij.lang.annotations.Language;
 
@@ -8,6 +7,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,7 +20,12 @@ import java.util.regex.Pattern;
 @UtilityClass
 public final class RegexUtil {
 
-    private static final LinkedHashMap<String, String> CACHED_COLOR_MESSAGES = new MaxSizeLinkedMap<>(100);
+    private static final LinkedHashMap<String, String> CACHED_COLOR_MESSAGES = new LinkedHashMap<>() {
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
+            return size() > 100;
+        }
+    };
     private static final LastCharCompare CODE_COMPARE = new LastCharCompare();
 
     // Minecraft Chat Formatting

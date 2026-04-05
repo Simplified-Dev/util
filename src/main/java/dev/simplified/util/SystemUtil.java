@@ -1,9 +1,9 @@
 package dev.simplified.util;
 
-import dev.simplified.collection.concurrent.Concurrent;
-import dev.simplified.collection.concurrent.ConcurrentList;
-import dev.simplified.collection.concurrent.ConcurrentMap;
-import dev.simplified.tuple.pair.Pair;
+import dev.simplified.collection.Concurrent;
+import dev.simplified.collection.ConcurrentList;
+import dev.simplified.collection.ConcurrentMap;
+import dev.simplified.collection.tuple.pair.Pair;
 import lombok.Cleanup;
 import lombok.Getter;
 import lombok.SneakyThrows;
