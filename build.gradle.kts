@@ -26,4 +26,12 @@ dependencies {
     // Lombok Annotations
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
+    testCompileOnly(libs.lombok)
+    testAnnotationProcessor(libs.lombok)
+
+    // Tests
+    testImplementation(libs.hamcrest)
+    testImplementation(libs.junit.jupiter.api)
+    testRuntimeOnly(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.platform.launcher)
 }
