@@ -150,7 +150,7 @@ public final class SystemUtil {
 
     /** Unmodifiable map of environment variables merged from {@code .env} files and OS environment. */
     @Getter
-    private static @NotNull ConcurrentMap<String, String> env = loadEnvironmentVariables().toUnmodifiableMap();
+    private static @NotNull ConcurrentMap<String, String> env = loadEnvironmentVariables().toUnmodifiable();
 
     /**
      * Returns the Java home directory as a {@link File}.
