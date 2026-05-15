@@ -63,97 +63,159 @@ public final class SystemUtil {
      */
     private static final String JAVA_HOME_KEY = "java.home";
 
-    /** The {@code file.encoding} system property, such as {@code Cp1252}. */
+    /**
+     * The {@code file.encoding} system property, such as {@code Cp1252}.
+     */
     public static final String FILE_ENCODING = getSystemProperty("file.encoding");
 
-    /** The {@code file.separator} system property - file separator ({@code "/"} on UNIX). */
+    /**
+     * The {@code file.separator} system property - file separator ({@code "/"} on UNIX).
+     */
     public static final String FILE_SEPARATOR = getSystemProperty("file.separator");
 
-    /** The {@code java.awt.headless} system property - {@code "true"} or {@code "false"}. */
+    /**
+     * The {@code java.awt.headless} system property - {@code "true"} or {@code "false"}.
+     */
     private static final String JAVA_AWT_HEADLESS = getSystemProperty("java.awt.headless");
 
-    /** The {@code java.home} system property - Java installation directory. */
+    /**
+     * The {@code java.home} system property - Java installation directory.
+     */
     public static final String JAVA_HOME = getSystemProperty(JAVA_HOME_KEY);
 
-    /** The {@code java.io.tmpdir} system property - default temp file path. */
+    /**
+     * The {@code java.io.tmpdir} system property - default temp file path.
+     */
     public static final String JAVA_IO_TMPDIR = getSystemProperty(JAVA_IO_TMPDIR_KEY);
 
-    /** The {@code java.class.path} system property - Java class path. */
+    /**
+     * The {@code java.class.path} system property - Java class path.
+     */
     public static final String JAVA_CLASS_PATH = getSystemProperty("java.class.path");
 
-    /** The {@code java.library.path} system property - list of paths to search when loading libraries. */
+    /**
+     * The {@code java.library.path} system property - list of paths to search when loading libraries.
+     */
     public static final String JAVA_LIBRARY_PATH = getSystemProperty("java.library.path");
 
-    /** The {@code java.runtime.name} system property - Java Runtime Environment name. */
+    /**
+     * The {@code java.runtime.name} system property - Java Runtime Environment name.
+     */
     public static final String JAVA_RUNTIME_NAME = getSystemProperty("java.runtime.name");
 
-    /** The {@code java.runtime.version} system property - Java Runtime Environment version. */
+    /**
+     * The {@code java.runtime.version} system property - Java Runtime Environment version.
+     */
     public static final String JAVA_RUNTIME_VERSION = getSystemProperty("java.runtime.version");
 
-    /** The {@code java.specification.name} system property - Java Runtime Environment specification name. */
+    /**
+     * The {@code java.specification.name} system property - Java Runtime Environment specification name.
+     */
     public static final String JAVA_SPECIFICATION_NAME = getSystemProperty("java.specification.name");
 
-    /** The {@code java.specification.vendor} system property - Java Runtime Environment specification vendor. */
+    /**
+     * The {@code java.specification.vendor} system property - Java Runtime Environment specification vendor.
+     */
     public static final String JAVA_SPECIFICATION_VENDOR = getSystemProperty("java.specification.vendor");
 
-    /** The {@code java.specification.version} system property - Java Runtime Environment specification version. */
+    /**
+     * The {@code java.specification.version} system property - Java Runtime Environment specification version.
+     */
     public static final String JAVA_SPECIFICATION_VERSION = getSystemProperty("java.specification.version");
 
-    /** The {@code java.util.prefs.PreferencesFactory} system property - a class name. */
+    /**
+     * The {@code java.util.prefs.PreferencesFactory} system property - a class name.
+     */
     public static final String JAVA_UTIL_PREFS_PREFERENCES_FACTORY = getSystemProperty("java.util.prefs.PreferencesFactory");
 
-    /** The {@code java.vendor} system property - Java vendor-specific string. */
+    /**
+     * The {@code java.vendor} system property - Java vendor-specific string.
+     */
     public static final String JAVA_VENDOR = getSystemProperty("java.vendor");
 
-    /** The {@code java.vendor.url} system property - Java vendor URL. */
+    /**
+     * The {@code java.vendor.url} system property - Java vendor URL.
+     */
     public static final String JAVA_VENDOR_URL = getSystemProperty("java.vendor.url");
 
-    /** The {@code java.version} system property - Java version number. */
+    /**
+     * The {@code java.version} system property - Java version number.
+     */
     public static final String JAVA_VERSION = getSystemProperty("java.version");
 
-    /** The {@code java.vm.info} system property - Java Virtual Machine implementation info. */
+    /**
+     * The {@code java.vm.info} system property - Java Virtual Machine implementation info.
+     */
     public static final String JAVA_VM_INFO = getSystemProperty("java.vm.info");
 
-    /** The {@code java.vm.name} system property - Java Virtual Machine implementation name. */
+    /**
+     * The {@code java.vm.name} system property - Java Virtual Machine implementation name.
+     */
     public static final String JAVA_VM_NAME = getSystemProperty("java.vm.name");
 
-    /** The {@code java.vm.specification.name} system property - Java Virtual Machine specification name. */
+    /**
+     * The {@code java.vm.specification.name} system property - Java Virtual Machine specification name.
+     */
     public static final String JAVA_VM_SPECIFICATION_NAME = getSystemProperty("java.vm.specification.name");
 
-    /** The {@code java.vm.specification.vendor} system property - Java Virtual Machine specification vendor. */
+    /**
+     * The {@code java.vm.specification.vendor} system property - Java Virtual Machine specification vendor.
+     */
     public static final String JAVA_VM_SPECIFICATION_VENDOR = getSystemProperty("java.vm.specification.vendor");
 
-    /** The {@code java.vm.specification.version} system property - Java Virtual Machine specification version. */
+    /**
+     * The {@code java.vm.specification.version} system property - Java Virtual Machine specification version.
+     */
     public static final String JAVA_VM_SPECIFICATION_VERSION = getSystemProperty("java.vm.specification.version");
 
-    /** The {@code java.vm.vendor} system property - Java Virtual Machine implementation vendor. */
+    /**
+     * The {@code java.vm.vendor} system property - Java Virtual Machine implementation vendor.
+     */
     public static final String JAVA_VM_VENDOR = getSystemProperty("java.vm.vendor");
 
-    /** The {@code java.vm.version} system property - Java Virtual Machine implementation version. */
+    /**
+     * The {@code java.vm.version} system property - Java Virtual Machine implementation version.
+     */
     public static final String JAVA_VM_VERSION = getSystemProperty("java.vm.version");
 
-    /** The {@code line.separator} system property - line separator ({@code "\n"} on UNIX). */
+    /**
+     * The {@code line.separator} system property - line separator ({@code "\n"} on UNIX).
+     */
     public static final String LINE_SEPARATOR = getSystemProperty("line.separator");
 
-    /** The {@code path.separator} system property - path separator ({@code ":"} on UNIX). */
+    /**
+     * The {@code path.separator} system property - path separator ({@code ":"} on UNIX).
+     */
     public static final String PATH_SEPARATOR = getSystemProperty("path.separator");
 
-    /** The {@code user.dir} system property - user's current working directory. */
+    /**
+     * The {@code user.dir} system property - user's current working directory.
+     */
     public static final String USER_DIR = getSystemProperty(USER_DIR_KEY);
 
-    /** The {@code user.home} system property - user's home directory. */
+    /**
+     * The {@code user.home} system property - user's home directory.
+     */
     public static final String USER_HOME = getSystemProperty(USER_HOME_KEY);
 
-    /** The {@code user.language} system property - user's language code, such as {@code "en"}. */
+    /**
+     * The {@code user.language} system property - user's language code, such as {@code "en"}.
+     */
     public static final String USER_LANGUAGE = getSystemProperty("user.language");
 
-    /** The {@code user.name} system property - user's account name. */
+    /**
+     * The {@code user.name} system property - user's account name.
+     */
     public static final String USER_NAME = getSystemProperty("user.name");
 
-    /** The {@code user.timezone} system property, for example {@code "America/Los_Angeles"}. */
+    /**
+     * The {@code user.timezone} system property, for example {@code "America/Los_Angeles"}.
+     */
     public static final String USER_TIMEZONE = getSystemProperty("user.timezone");
 
-    /** Unmodifiable map of environment variables merged from {@code .env} files and OS environment. */
+    /**
+     * Unmodifiable map of environment variables merged from {@code .env} files and OS environment.
+     */
     @Getter
     private static @NotNull ConcurrentMap<String, String> env = loadEnvironmentVariables().toUnmodifiable();
 

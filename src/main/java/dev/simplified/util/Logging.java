@@ -136,28 +136,50 @@ public final class Logging {
     @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
     public enum Level {
 
-        /** Disables all logging output. */
+        /**
+         * Disables all logging output.
+         */
         OFF("OFF", "OFF", "OFF"),
-        /** Severe errors that may cause premature termination. */
+        /**
+         * Severe errors that may cause premature termination.
+         */
         FATAL("FATAL", "ERROR", "SEVERE"),
-        /** Errors that might still allow the application to continue. */
+        /**
+         * Errors that might still allow the application to continue.
+         */
         ERROR("ERROR", "ERROR", "SEVERE"),
-        /** Potentially harmful situations. */
+        /**
+         * Potentially harmful situations.
+         */
         WARN("WARN", "WARN", "WARNING"),
-        /** Informational messages highlighting progress at a coarse level. */
+        /**
+         * Informational messages highlighting progress at a coarse level.
+         */
         INFO("INFO", "INFO", "INFO"),
-        /** Fine-grained informational events useful for debugging. */
+        /**
+         * Fine-grained informational events useful for debugging.
+         */
         DEBUG("DEBUG", "DEBUG", "FINE"),
-        /** Most detailed informational events. */
+        /**
+         * Most detailed informational events.
+         */
         TRACE("TRACE", "TRACE", "FINEST"),
-        /** Enables all logging output. */
+        /**
+         * Enables all logging output.
+         */
         ALL("ALL", "ALL", "ALL");
 
-        /** Level name used by Log4j2. */
+        /**
+         * Level name used by Log4j2.
+         */
         private final @NotNull String log4j2Name;
-        /** Level name used by Logback/SLF4J. */
+        /**
+         * Level name used by Logback/SLF4J.
+         */
         private final @NotNull String logbackName;
-        /** Level name used by {@code java.util.logging}. */
+        /**
+         * Level name used by {@code java.util.logging}.
+         */
         private final @NotNull String julName;
 
         /**

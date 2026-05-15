@@ -8243,7 +8243,7 @@ public final class StringUtil {
      * <p>
      * The returned substring starts with the character in the {@code start}
      * position and ends before the {@code end} position. All position counting is
-     * zero-based -- i.e., to start at the beginning of the string use
+     * zero-based - i.e., to start at the beginning of the string use
      * {@code start = 0}. Negative start and end positions can be used to
      * specify offsets relative to the end of the String.
      *

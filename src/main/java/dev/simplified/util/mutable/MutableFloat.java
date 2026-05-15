@@ -10,7 +10,9 @@ package dev.simplified.util.mutable;
  */
 public class MutableFloat extends Number implements Comparable<MutableFloat>, Mutable<Number> {
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private float value;
 
     /**
@@ -248,7 +250,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
     /**
      * Returns the value of this MutableFloat as an int.
      *
-     * @return the numeric value represented by this object after conversion to type int.
+     * @return the numeric value represented by this object after conversion to type int
      */
     @Override
     public int intValue() {
@@ -258,7 +260,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
     /**
      * Returns the value of this MutableFloat as a long.
      *
-     * @return the numeric value represented by this object after conversion to type long.
+     * @return the numeric value represented by this object after conversion to type long
      */
     @Override
     public long longValue() {
@@ -268,7 +270,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
     /**
      * Returns the value of this MutableFloat as a float.
      *
-     * @return the numeric value represented by this object after conversion to type float.
+     * @return the numeric value represented by this object after conversion to type float
      */
     @Override
     public float floatValue() {
@@ -278,7 +280,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
     /**
      * Returns the value of this MutableFloat as a double.
      *
-     * @return the numeric value represented by this object after conversion to type double.
+     * @return the numeric value represented by this object after conversion to type double
      */
     @Override
     public double doubleValue() {
@@ -324,7 +326,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * This definition allows hashtables to operate properly.
      *
      * @param obj the object to compare with, null returns false
-     * @return {@code true} if the objects are the same; {@code false} otherwise.
+     * @return {@code true} if the objects are the same; {@code false} otherwise
      * @see Float#floatToIntBits(float)
      */
     @Override

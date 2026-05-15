@@ -25,13 +25,19 @@ import java.util.function.Supplier;
  */
 public final class Lazy<T> implements Supplier<T> {
 
-    /** Sentinel marking the cache slot as not-yet-computed; distinguishes uninitialized from a cached {@code null}. */
+    /**
+     * Sentinel marking the cache slot as not-yet-computed; distinguishes uninitialized from a cached {@code null}.
+     */
     private static final @NotNull Object UNINITIALIZED = new Object();
 
-    /** The deferred value computation, invoked at most once on first {@link #get()}. */
+    /**
+     * The deferred value computation, invoked at most once on first {@link #get()}.
+     */
     private final @NotNull Supplier<T> initializer;
 
-    /** Either {@link #UNINITIALIZED} or the cached value produced by {@link #initializer}. */
+    /**
+     * Either {@link #UNINITIALIZED} or the cached value produced by {@link #initializer}.
+     */
     private volatile @NotNull Object value = UNINITIALIZED;
 
     /**

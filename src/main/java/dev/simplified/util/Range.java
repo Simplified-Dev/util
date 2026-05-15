@@ -94,17 +94,25 @@ public final class Range<T> implements Serializable {
         return between(element, element, comparator);
     }
 
-    /** The comparator used to order elements within this range; never {@code null} (natural ordering uses an internal implementation). */
+    /**
+     * The comparator used to order elements within this range; never {@code null} (natural ordering uses an internal implementation).
+     */
     private final @NotNull Comparator<T> comparator;
 
-    /** Cached hash code value (safe because this class is immutable). */
+    /**
+     * Cached hash code value (safe because this class is immutable).
+     */
     @Getter(AccessLevel.NONE)
     private transient int hashCode;
 
-    /** The maximum (upper bound) value in this range, inclusive. */
+    /**
+     * The maximum (upper bound) value in this range, inclusive.
+     */
     private final @NotNull T maximum;
 
-    /** The minimum (lower bound) value in this range, inclusive. */
+    /**
+     * The minimum (lower bound) value in this range, inclusive.
+     */
     private final @NotNull T minimum;
 
     /**
@@ -425,7 +433,9 @@ public final class Range<T> implements Serializable {
     @SuppressWarnings({"rawtypes", "unchecked"})
     private enum ComparableComparator implements Comparator {
 
-        /** Singleton instance. */
+        /**
+         * Singleton instance.
+         */
         INSTANCE;
 
         /**

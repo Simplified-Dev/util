@@ -17,16 +17,24 @@ import java.util.Map;
 @UtilityClass
 public final class PrimitiveUtil {
 
-    /** Immutable map from each primitive type to its corresponding wrapper type. */
+    /**
+     * Immutable map from each primitive type to its corresponding wrapper type.
+     */
     @Getter private static final Map<Class<?>, Class<?>> primitiveToWrapperTypes;
 
-    /** Immutable map from each wrapper type to its corresponding primitive type. */
+    /**
+     * Immutable map from each wrapper type to its corresponding primitive type.
+     */
     @Getter private static final Map<Class<?>, Class<?>> wrapperToPrimitiveTypes;
 
-    /** Map from primitive class name to its corresponding abbreviation used in array class names. */
+    /**
+     * Map from primitive class name to its corresponding abbreviation used in array class names.
+     */
     @Getter private static final Map<String, String> abbreviationMap = new HashMap<>();
 
-    /** Map from array class name abbreviation to its corresponding primitive class name. */
+    /**
+     * Map from array class name abbreviation to its corresponding primitive class name.
+     */
     @Getter private static final Map<String, String> reverseAbbreviationMap = new HashMap<>();
 
     /**
@@ -97,7 +105,7 @@ public final class PrimitiveUtil {
      *     wrap(String.class) == String.class
      * </pre>
      *
-     * @param <T>  the type
+     * @param <T> the type
      * @param type the class to wrap
      * @return the wrapper type, or the original type if not primitive
      */
@@ -116,7 +124,7 @@ public final class PrimitiveUtil {
      *     unwrap(String.class) == String.class
      * </pre>
      *
-     * @param <T>  the type
+     * @param <T> the type
      * @param type the class to unwrap
      * @return the primitive type, or the original type if not a wrapper
      */

@@ -8,6 +8,7 @@ import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.text.ParseException;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
@@ -309,7 +310,7 @@ public final class NumberUtil {
     /**
      * Converts a value to the specified {@link Number} subclass, returning zero on failure.
      *
-     * @param <N>  the target number type
+     * @param <N> the target number type
      * @param value the value to convert
      * @param clazz the target number class
      * @return the converted number, or zero if conversion fails
@@ -322,7 +323,7 @@ public final class NumberUtil {
      * Converts a value to the specified {@link Number} subclass, returning the
      * default value if the input is not a creatable number.
      *
-     * @param <N>  the target number type
+     * @param <N> the target number type
      * @param value the value to convert
      * @param defaultValue the fallback value if conversion fails
      * @param clazz the target number class
@@ -1980,7 +1981,7 @@ public final class NumberUtil {
      *
      * <p>Parsable numbers include those Strings understood by {@link Integer#parseInt(String)},
      * {@link Long#parseLong(String)}, {@link Float#parseFloat(String)} or
-     * {@link Double#parseDouble(String)}. This method can be used instead of catching {@link java.text.ParseException}
+     * {@link Double#parseDouble(String)}. This method can be used instead of catching {@link ParseException}
      * when calling one of those methods.</p>
      *
      * <p>Hexadecimal and scientific notations are <strong>not</strong> considered parsable.
@@ -1988,8 +1989,8 @@ public final class NumberUtil {
      *
      * <p>{@code Null} and empty String will return {@code false}.</p>
      *
-     * @param str the String to check.
-     * @return {@code true} if the string is a parsable number.
+     * @param str the String to check
+     * @return {@code true} if the string is a parsable number
      */
     public static boolean isParsable(final String str) {
         if (StringUtil.isEmpty(str)) {

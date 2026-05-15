@@ -11,7 +11,7 @@ import java.io.OutputStream;
 import java.nio.charset.Charset;
 
 /**
- * An extension of {@link java.io.DataOutputStream} for writing to in-memory byte arrays.
+ * An extension of {@link DataOutputStream} for writing to in-memory byte arrays.
  */
 public class ByteArrayDataOutput extends DataOutputStream {
 

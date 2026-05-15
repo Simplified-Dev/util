@@ -13,7 +13,9 @@ import dev.simplified.util.NumberUtil;
  */
 public class MutableByte extends Number implements Comparable<MutableByte>, Mutable<Number> {
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private byte value;
 
     /**

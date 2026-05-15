@@ -12,7 +12,9 @@ import dev.simplified.util.NumberUtil;
  */
 public class MutableLong extends Number implements Comparable<MutableLong>, Mutable<Number> {
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private long value;
 
     /**

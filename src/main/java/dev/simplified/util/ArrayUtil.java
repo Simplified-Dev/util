@@ -7,6 +7,8 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.*;
 
 /**
@@ -6697,20 +6699,20 @@ public final class ArrayUtil {
     }
 
     /**
-     * Converts the given array into a {@link java.util.Map}. Each element of the array must be
-     * either a {@link java.util.Map.Entry} or an Array, containing at least two elements, where
+     * Converts the given array into a {@link Map}. Each element of the array must be
+     * either a {@link Entry} or an Array, containing at least two elements, where
      * the first element is used as key and the second as value.
      *
      * <p>
      * This method returns {@code null} for a {@code null} input array.
      *
-     * @param array an array whose elements are either a {@link java.util.Map.Entry} or an Array
+     * @param array an array whose elements are either a {@link Entry} or an Array
      * containing at least two elements, may be {@code null}
      * @return a {@code Map} that was created from the array
      * @throws IllegalArgumentException if one element of this array is itself an Array containing
      * less than two elements
      * @throws IllegalArgumentException if the array contains elements other than
-     * {@link java.util.Map.Entry} and an Array
+     * {@link Entry} and an Array
      */
     public static Map<Object, Object> toMap(final Object[] array) {
         if (array == null) {

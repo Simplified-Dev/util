@@ -12,7 +12,9 @@ import dev.simplified.util.NumberUtil;
  */
 public class MutableInt extends Number implements Comparable<MutableInt>, Mutable<Number> {
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private int value;
 
     /**

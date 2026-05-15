@@ -21,7 +21,9 @@ public final class ExceptionUtil {
 
     private static final int NOT_FOUND = -1;
 
-    /** Method names commonly used to access a wrapped exception. */
+    /**
+     * Method names commonly used to access a wrapped exception.
+     */
     private static final String[] CAUSE_METHOD_NAMES = {
         "getCause",
         "getNextException",
@@ -37,7 +39,9 @@ public final class ExceptionUtil {
         "getThrowable",
     };
 
-    /** Marker used when printing stack frames to denote the start of a wrapped exception. */
+    /**
+     * Marker used when printing stack frames to denote the start of a wrapped exception.
+     */
     static final String WRAPPED_MARKER = " [wrapped] ";
 
     /**
@@ -713,7 +717,7 @@ public final class ExceptionUtil {
      * catch Exception and use the instanceof operator.
      *
      * @param throwable the throwable to rethrow
-     * @param <R>  the type of the returned value
+     * @param <R> the type of the returned value
      * @return never actually returned, this generic type matches any type
      *  which the calling site requires
      * @see #wrapAndThrow(Throwable)
@@ -726,7 +730,7 @@ public final class ExceptionUtil {
     /**
      * Searches for a throwable of the given type in the exception chain starting from a given index.
      *
-     * @param <T>  the type of throwable to search for
+     * @param <T> the type of throwable to search for
      * @param throwable the throwable to inspect, may be null
      * @param type the type to search for, subclasses match, null returns null
      * @param fromIndex the (zero-based) index of the starting position,
@@ -772,7 +776,7 @@ public final class ExceptionUtil {
      * A {@code null} type returns {@code null}.
      * No match in the chain returns {@code null}.
      *
-     * @param <T>  the type of throwable to search for
+     * @param <T> the type of throwable to search for
      * @param throwable the throwable to inspect, may be null
      * @param clazz the class to search for, subclasses do not match, null returns null
      * @return the first matching throwable from the throwable chain, null if no match or null input
@@ -794,7 +798,7 @@ public final class ExceptionUtil {
      * A negative start index is treated as zero.
      * A start index greater than the number of throwables returns {@code null}.
      *
-     * @param <T>  the type of throwable to search for
+     * @param <T> the type of throwable to search for
      * @param throwable the throwable to inspect, may be null
      * @param clazz the class to search for, subclasses do not match, null returns null
      * @param fromIndex the (zero-based) index of the starting position,
@@ -815,7 +819,7 @@ public final class ExceptionUtil {
      * A {@code null} type returns {@code null}.
      * No match in the chain returns {@code null}.
      *
-     * @param <T>  the type of throwable to search for
+     * @param <T> the type of throwable to search for
      * @param throwable the throwable to inspect, may be null
      * @param type the type to search for, subclasses match, null returns null
      * @return the first matching throwable from the throwable chain, null if no match or null input
@@ -837,7 +841,7 @@ public final class ExceptionUtil {
      * A negative start index is treated as zero.
      * A start index greater than the number of throwables returns {@code null}.
      *
-     * @param <T>  the type of throwable to search for
+     * @param <T> the type of throwable to search for
      * @param throwable the throwable to inspect, may be null
      * @param type the type to search for, subclasses match, null returns null
      * @param fromIndex the (zero-based) index of the starting position,
@@ -852,8 +856,8 @@ public final class ExceptionUtil {
      * Claims a {@code Throwable} is another exception type using type erasure,
      * hiding a checked exception from the java compiler.
      *
-     * @param <R>  the nominal return type
-     * @param <T>  the throwable type to masquerade as
+     * @param <R> the nominal return type
+     * @param <T> the throwable type to masquerade as
      * @param throwable the throwable to throw
      * @return never returns; always throws
      * @throws T  always
@@ -876,7 +880,7 @@ public final class ExceptionUtil {
      * determine if the caught exception was caused by the checked exception.
      *
      * @param throwable the throwable to rethrow
-     * @param <R>  the type of the returned value
+     * @param <R> the type of the returned value
      * @return never actually returned, this generic type matches any type
      *  which the calling site requires
      * @see #rethrow(Throwable)

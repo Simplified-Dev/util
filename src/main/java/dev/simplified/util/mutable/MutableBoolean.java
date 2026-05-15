@@ -13,7 +13,9 @@ import java.io.Serializable;
  */
 public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparable<MutableBoolean> {
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private boolean value;
 
     /**

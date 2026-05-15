@@ -11,13 +11,19 @@ import org.jetbrains.annotations.NotNull;
 @UtilityClass
 public final class CharUtil {
 
-    /** Linefeed character LF ({@code '\n'}, Unicode 000a). */
+    /**
+     * Linefeed character LF ({@code '\n'}, Unicode 000a).
+     */
     public static final char LF = '\n';
 
-    /** Carriage return character CR ({@code '\r'}, Unicode 000d). */
+    /**
+     * Carriage return character CR ({@code '\r'}, Unicode 000d).
+     */
     public static final char CR = '\r';
 
-    /** Null control character NUL ({@code '\0'}, Unicode 0000). */
+    /**
+     * Null control character NUL ({@code '\0'}, Unicode 0000).
+     */
     public static final char NUL = '\0';
 
     private static final String[] CHAR_STRING_ARRAY = new String[128];

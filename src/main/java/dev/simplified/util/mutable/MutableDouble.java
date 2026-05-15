@@ -10,7 +10,9 @@ package dev.simplified.util.mutable;
  */
 public class MutableDouble extends Number implements Comparable<MutableDouble>, Mutable<Number> {
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private double value;
 
     /**
