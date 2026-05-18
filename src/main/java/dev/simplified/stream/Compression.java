@@ -244,13 +244,18 @@ public enum Compression {
 			return out;
 		}
 
+		// GZIP routes through GzipCompression's pre-sized deflate path - same wire format as the
+		// generic GZIPOutputStream branch below, but the accumulator is sized to zlib's
+		// deflateBound up front so no growth copies occur during compression.
+		if (compression == GZIP)
+			return GzipCompression.compress(data, offset, length);
+
+		if (compression != ZLIB)
+			throw new UnsupportedOperationException("Compression format " + compression + " is not supported");
+
 		try {
 			@Cleanup ByteArrayDataOutput output = new ByteArrayDataOutput();
-			@Cleanup OutputStream compressedOutput = switch (compression) {
-				case GZIP -> new GZIPOutputStream(output);
-				case ZLIB -> new DeflaterOutputStream(output);
-				default -> throw new UnsupportedOperationException("Compression format " + compression + " is not supported");
-			};
+			@Cleanup OutputStream compressedOutput = new DeflaterOutputStream(output);
 
 			compressedOutput.write(data, offset, length);
 			compressedOutput.flush();
@@ -275,6 +280,12 @@ public enum Compression {
 
 		if (type == NONE)
 			return data;
+
+		// GZIP routes through GzipCompression's pre-sized inflate path - reads the ISIZE trailer
+		// to allocate the output buffer exactly once. Falls back to the growable loop below
+		// (transparently) when the trailer-read guard rejects the input.
+		if (type == GZIP)
+			return GzipCompression.decompress(data);
 
 		try (InputStream in = wrap(new ByteArrayDataInput(data));
 			ByteArrayDataOutput out = new ByteArrayDataOutput()) {
